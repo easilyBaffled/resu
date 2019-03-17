@@ -1,2 +1,0 @@
-# resu
-Created with CodeSandbox

@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono|Open+Sans");
+
+body {
+  background: #eee;
+  padding: 10px;
+}
+.page {
+  font-family: "Open Sans", sans-serif;
+  height: 11in;
+  width: 8.5in;
+  padding: 0.5in;
+  box-sizing: border-box;
+  box-shadow: 0 0 11px 8px #00000038;
+}
+
+code {
+  font-family: "Fira Mono", monospace;
+  background: lightgray;
+}
