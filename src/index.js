@@ -6,14 +6,14 @@ import "./rythm.css";
 
 import NPM from "./logos/npm-svg";
 
-const SectionHeader = ({ children }) => <div>{children}</div>;
-const ItemHeader = ({ children }) => <h4>{children}</h4>;
+const SectionHeader = ({ children }) => <h3 className="section-header">{children}</h3>;
+const ItemHeader = ({ children }) => <h4 className="item-header">{children}</h4>;
 
-const PersonalProject = ({ name, icon, content }) => (
+const PersonalProject = ({ name, icon: Icon, content }) => (
   <div>
     <ItemHeader>
-      {name}
-      {icon}
+        <span>{name}</span>
+      <Icon/>
     </ItemHeader>
     {content()}
   </div>
@@ -21,7 +21,34 @@ const PersonalProject = ({ name, icon, content }) => (
 
 const sections = {
   personalProjects: [
-    {
+      {
+          name: "N/A",
+          icon: () => "-",
+          content: () => (
+              <div>
+                  N/A
+              </div>
+          )
+      },
+      {
+          name: "N/A",
+          icon: () => "",
+          content: () => (
+              <div>
+                  N/A
+              </div>
+          )
+      },
+      {
+          name: "N/A",
+          icon: () => "N/A",
+          content: () => (
+              <div>
+                  N/A
+              </div>
+          )
+      },
+  {
       name: "console.ident",
       icon: NPM,
       content: () => (
@@ -52,7 +79,23 @@ function App() {
     <div className="page">
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
-      <PersonalProject {...sections.personalProjects[0]} />
+        <header>
+            <span>
+                <h1>
+                    Danny Michaelis
+                </h1>
+            </span>
+            <span></span>
+        </header>
+        <section></section>
+        <footer>
+        <SectionHeader>Personal Projects</SectionHeader>
+        <div className="grid">
+          {sections.personalProjects.map(project => (
+            <PersonalProject key={project.name} {...project} />
+          ))}
+        </div>
+      </footer>
     </div>
   );
 }

@@ -38,6 +38,7 @@ h2 {
 
 h3 {
   font-size: 4.236em;
+  color: #138ade;
 }
 
 h4 {
@@ -51,4 +52,8 @@ h5 {
 small,
 .text_small {
   font-size: 0.618em;
+}
+
+svg {
+  height: .8em;
 }
