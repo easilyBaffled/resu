@@ -5,9 +5,16 @@
 }
 
 body {
-  background: #eee;
+  background: #fefefe;
   padding: 10px;
+  font-family: "Open Sans", sans-serif;
+  color: #333;
 }
+
+.important {
+  color: #138ade
+}
+
 .page {
   font-family: "Open Sans", sans-serif;
   height: 11in;
@@ -35,11 +42,11 @@ h3, h4, .section-header {
   align-items: center;
 }
 
-h3 > *, h4 > * ,
-.section-header > * {
+.item-header > * {
   margin-right: 30px;
 }
 
-.section-header {
-  text-decoration: underline;
+.underline {
+  padding-right: 1rem;
+  border-bottom: 2px solid #090909;
 }
