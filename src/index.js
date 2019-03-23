@@ -9,7 +9,28 @@ import { Flex, Box } from "@rebass/grid/emotion";
 import "./styles.css";
 import "./rythm.css";
 
-import sections from './sections';
+import sections from "./sections";
+
+console.ident = ( v, l = '' ) => ( console.log( l, v ), v );
+
+const sectionBorders = {
+    top: css({ borderTop: '2px solid black'}),
+    right: css({ borderRight: '2px solid black'}),
+    bottom: css({ borderBottom: '2px solid black'}),
+    left: css({ borderLeft: '2px solid black'}),
+}
+
+const headerDataBorders = {
+    top: css({ borderTop: '1px solid lightgrey'}),
+    right: css({ borderRight: '1px solid lightgrey'}),
+    bottom: css({ borderBottom: '1px solid lightgrey'}),
+    left: css({ borderLeft: '1px solid lightgrey'}),
+}
+
+const border = ( ...sides ) =>
+    css(
+        ...sides.map( side =>  sectionBorders[side] )
+    );
 
 const centered = css({
   display: "flex",
@@ -52,22 +73,19 @@ const ItemHeader = styled.h5(
 // match css rule (\w+)(?:-(\w+))?(?:-(\w+))?(?:-(\w+))?:\s*([^;]+)
 
 const ProfessionalExperience = ({ name, dateRange, title, points }) => (
-  <div>
-    <Flex justifyContent="space-between">
-      <Box width={1 / 2}>
-        <ItemHeader>{title}</ItemHeader>
-      </Box>
-      <Box width={1 / 2}>
-        <ItemHeader>{dateRange}</ItemHeader>
-      </Box>
-    </Flex>
-    <ItemHeader>{name}</ItemHeader>
-    <ul style={{borderBottom: "1px solid black", maxWidth: "80%", padding: '1rem 2rem'}}>
-      {points.map(point => (
-        <li key={point}>{point}</li>
-      ))}
-    </ul>
-  </div>
+    <Box width={4/5} >
+        <Flex justifyContent="space-between">
+            <ItemHeader>{title}</ItemHeader>
+            <ItemHeader>{dateRange}</ItemHeader>
+        </Flex>
+        <ItemHeader>{name}</ItemHeader>
+        <ul style={{ padding: "0 2rem"}}>
+          {points.map(point => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+        <Box width={2/3} mb={3} css={ name !== 'AOL' && sectionBorders.bottom } />
+  </Box>
 );
 
 const PersonalProject = ({ name, icon: Icon, content }) => (
@@ -80,47 +98,43 @@ const PersonalProject = ({ name, icon: Icon, content }) => (
   </div>
 );
 
-
-
 function App() {
   return (
     <div className="page">
-      <Flex as="header" css={centered}>
-        <h1 css={important}>Danny Michaelis</h1>
-        <Flex flexWrap="wrap">
-          <Box width={1} as="h4" css={important}>
-            2122 Massachusetts Ave NW Washington, DC 20008
-          </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            Email: dmichaelis0@gmail.com
-          </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            Cell Phone: 973-518-0044
-          </Box>
+      <Flex as="header" css={[centered, sectionBorders.bottom]}>
+        <Box width={1 / 4} as="h1" css={[important, sectionBorders.right]}>
+          Danny Michaelis
+        </Box>
+        <Box width={3 / 4}>
+          <Flex flexWrap="wrap">
+            <Box width={1} as="h4" css={[important, headerDataBorders.bottom]}>
+              2122 Massachusetts Ave NW Washington, DC 20008
+            </Box>
+            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.bottom, headerDataBorders.right]}>
+              Email: dmichaelis0@gmail.com
+            </Box>
+            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.bottom]}>
+              Cell Phone: 973-518-0044
+            </Box>
 
-          <Box width={1 / 2} as="h4" css={important}>
-            Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
-          </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>
-          </Box>
-        </Flex>
+            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.right]}>
+              Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+            </Box>
+            <Box width={1 / 2} as="h4" css={important}>
+              LinkedIn:{" "}
+              <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>
+            </Box>
+          </Flex>
+        </Box>
       </Flex>
-        <h4><span css={important}>Education </span>
 
-            University of Maryland{' '}
-            College Park
-            Bachelors of Science
-            Computer Science
-            - May 2014
-        </h4>
-            <section className="body">
+      <section className="body">
         <SectionHeader>Professional Experience</SectionHeader>
         {sections.professionalExperience.map(experiance => (
           <ProfessionalExperience key={experiance.name} {...experiance} />
         ))}
       </section>
-      <footer>
+      <footer css={sectionBorders.top}>
         <SectionHeader>Personal Projects</SectionHeader>
         <div className="grid">
           {sections.personalProjects.map(project => (
@@ -128,6 +142,11 @@ function App() {
           ))}
         </div>
       </footer>
+        <h4>
+            <span css={important}>Education </span>
+            University of Maryland College Park Bachelors of Science Computer
+            Science - May 2014
+        </h4>
     </div>
   );
 }
