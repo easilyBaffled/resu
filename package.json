@@ -5,8 +5,10 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@rebass/grid": "6.0.0-0",
-    "emotion": "^10.0.6",
+    "@emotion/core": "^10.0.9",
+    "@emotion/styled": "^10.0.9",
+    "@rebass/grid": "^6.0.0-7",
+    "emotion": "^10.0.9",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-scripts": "^2.1.8",
