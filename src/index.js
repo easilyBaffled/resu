@@ -27,11 +27,6 @@ const headerDataBorders = {
     left: css({ borderLeft: '1px solid lightgrey'}),
 }
 
-const border = ( ...sides ) =>
-    css(
-        ...sides.map( side =>  sectionBorders[side] )
-    );
-
 const centered = css({
   display: "flex",
   alignItems: "center"
@@ -43,7 +38,9 @@ const important = css({
 
 const Underlined = styled.span({
   paddingRight: "1.5rem",
-  borderBottom: "2px solid #090909"
+    paddingTop: '.5rem',
+    paddingBottom: '.5rem',
+    borderBottom: "2px solid #090909"
 });
 
 const ImportantHeader = styled.h3(
@@ -62,9 +59,9 @@ const SectionHeader = ({ children }) => (
 
 const ItemHeader = styled.h5(
   {
-    marginTop: "0",
+    paddingTop: "0",
     "& *": {
-      marginRight: "1rem"
+      paddingRight: "1rem"
     }
   },
   centered
@@ -73,7 +70,7 @@ const ItemHeader = styled.h5(
 // match css rule (\w+)(?:-(\w+))?(?:-(\w+))?(?:-(\w+))?:\s*([^;]+)
 
 const ProfessionalExperience = ({ name, dateRange, title, points }) => (
-    <Box width={4/5} >
+    <Box width={1} >
         <Flex justifyContent="space-between">
             <ItemHeader>{title}</ItemHeader>
             <ItemHeader>{dateRange}</ItemHeader>
@@ -98,29 +95,33 @@ const PersonalProject = ({ name, icon: Icon, content }) => (
   </div>
 );
 
+const splitPadding = css({
+    padding: '.5rem .5rem .5rem'
+});
+
 function App() {
   return (
     <div className="page">
       <Flex as="header" css={[centered, sectionBorders.bottom]}>
-        <Box width={1 / 4} as="h1" css={[important, sectionBorders.right]}>
+        <Box width={1 / 4} as="h1" css={[important]}>
           Danny Michaelis
         </Box>
-        <Box width={3 / 4}>
+        <Box width={3 / 4} css={sectionBorders.left}>
           <Flex flexWrap="wrap">
-            <Box width={1} as="h4" css={[important, headerDataBorders.bottom]}>
+            <Box width={1} as="h4" css={[important, splitPadding,  headerDataBorders.bottom]}>
               2122 Massachusetts Ave NW Washington, DC 20008
             </Box>
-            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.bottom, headerDataBorders.right]}>
+            <Box width={1 / 2} as="h4" css={[important, splitPadding, headerDataBorders.bottom, headerDataBorders.right]}>
               Email: dmichaelis0@gmail.com
             </Box>
-            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.bottom]}>
+            <Box width={1 / 2} as="h4" css={[important, splitPadding, headerDataBorders.bottom]}>
               Cell Phone: 973-518-0044
             </Box>
 
-            <Box width={1 / 2} as="h4" css={[important, headerDataBorders.right]}>
+            <Box width={1 / 2} as="h4" css={[important, splitPadding, headerDataBorders.right]}>
               Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
             </Box>
-            <Box width={1 / 2} as="h4" css={important}>
+            <Box width={1 / 2} as="h4" css={[important, splitPadding]}>
               LinkedIn:{" "}
               <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>
             </Box>
