@@ -5,11 +5,14 @@ import styled from "@emotion/styled";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Flex, Box } from "@rebass/grid/emotion";
+import { GraphQL, JQuery, ReactLogo, Redux, Sass, Nodejs, Angular } from 'emotion-icons/simpleIcons';
 
 import "./styles.css";
 import "./rythm.css";
 
 import sections from './sections';
+
+const negateMargin = css({ margin: 0 } );
 
 const centered = css({
   display: "flex",
@@ -32,6 +35,34 @@ const ImportantHeader = styled.h3(
   },
   important
 );
+
+const ToolsBar = () =>
+    <Box width={1}>
+        <Flex alignItems="center" css={css({ '& *': { marginRight: 20, marginBottom: '.5rem' } })}>
+            <h5>Tools:</h5>
+            <Box>
+                <GraphQL css={ css({ height: '1.5rem' }) }/> GraphQL
+            </Box>
+            <Box>
+                <ReactLogo css={ css({ height: '1.5rem' }) } /> React
+            </Box>
+            <Box>
+                <Redux css={ css({ height: '1.5rem' }) } /> Redux
+            </Box>
+            <Box>
+                <JQuery css={ css({ height: '1.5rem' }) } /> JQuery ( + HandleBars )
+            </Box>
+            <Box>
+                <Sass css={ css({ height: '1.5rem' }) } /> Sass
+            </Box>
+            <Box>
+                <Nodejs css={ css({ height: '1.5rem' }) } /> Node.js ( Express )
+            </Box>
+            <Box>
+                <Angular css={ css({ height: '1.5rem' }) } /> Angular
+            </Box>
+        </Flex>
+    </Box>;
 
 const SectionHeader = ({ children }) => (
   <ImportantHeader>
@@ -62,11 +93,13 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
       </Box>
     </Flex>
     <ItemHeader>{name}</ItemHeader>
-    <ul style={{borderBottom: "1px solid black", maxWidth: "80%", padding: '1rem 2rem'}}>
+    <ul style={{ maxWidth: "80%", padding: '1rem 2rem'}}>
       {points.map(point => (
         <li key={point}>{point}</li>
       ))}
     </ul>
+    <ToolsBar/>
+    <Box width={2/3} css={css({borderBottom: "1px solid black"})}/>
   </div>
 );
 
