@@ -87,7 +87,9 @@ const PersonalProject = ({ name, icon: Icon, content }) => (
     </ItemHeader>
     {content()}
   </div>
-);
+)
+
+const useIcon = true;
 
 function App() {
   return (
@@ -99,20 +101,20 @@ function App() {
           <Box width={3/4}>
               <Flex flexWrap="wrap" css={css({ '& *': { color: '#6ca6d0' }  })}> {/*Experimental, making the colors lighter so it pulls less attention*/}
                   <Box width={1 / 2} as="h5" css={important}>
-                      <LocationCity/> Washington, DC 20009
+                      { useIcon ? <LocationCity/>  : '' }Washington, DC 20009
                   </Box>
                   <Box width={1 / 2} as="h5" css={important}>
-                      <Email/> dmichaelis0@gmail.com
+                       { useIcon ? <Email/>  : 'Email:' } dmichaelis0@gmail.com
                   </Box>
                   <Box width={1 / 2} as="h5" css={important}>
-                      <Phone/> 973-518-0044
+                      { useIcon ? <Phone/>  : 'Phone:' } 973-518-0044
                   </Box>
 
                   <Box width={1 / 2} as="h5" css={important}>
-                      <MarkGithub /> Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+                      { useIcon ? <MarkGithub/>  : '' } Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
                   </Box>
                   <Box as="h5" css={[important]}>
-                      <School /> University of Maryland College Park BS Computer Science - May 2014
+                      { useIcon ? <School/>  : 'School:' } University of Maryland College Park BS Computer Science - May 2014
                   </Box>
                   {/*<Box width={1 / 2} as="h4" css={important}>*/}
                   {/*LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
