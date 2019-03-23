@@ -9,7 +9,7 @@ import { Flex, Box } from "@rebass/grid/emotion";
 import "./styles.css";
 import "./rythm.css";
 
-import sections from './sections';
+import sections from "./sections";
 
 const centered = css({
   display: "flex",
@@ -62,7 +62,13 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
       </Box>
     </Flex>
     <ItemHeader>{name}</ItemHeader>
-    <ul style={{borderBottom: "1px solid black", maxWidth: "80%", padding: '1rem 2rem'}}>
+    <ul
+      style={{
+        borderBottom: "1px solid black",
+        maxWidth: "80%",
+        padding: "1rem 2rem"
+      }}
+    >
       {points.map(point => (
         <li key={point}>{point}</li>
       ))}
@@ -80,41 +86,44 @@ const PersonalProject = ({ name, icon: Icon, content }) => (
   </div>
 );
 
-
-
 function App() {
   return (
     <div className="page">
       <Flex as="header" css={centered}>
-        <h1 css={important}>Danny Michaelis</h1>
-        <Flex flexWrap="wrap">
-          <Box width={1} as="h4" css={important}>
-            2122 Massachusetts Ave NW Washington, DC 20008
+          <Box width={1/4} as="h1" css={important}>
+              Danny Michaelis
           </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            Email: dmichaelis0@gmail.com
-          </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            Cell Phone: 973-518-0044
-          </Box>
+          <Box width={3/4}>
+              <Flex flexWrap="wrap">
+                  <Box width={1 / 2} as="h4" css={important}>
+                      Washington, DC 20009
+                  </Box>
+                  <Box width={1 / 2} as="h4" css={important}>
+                      Email: dmichaelis0@gmail.com
+                  </Box>
+                  <Box width={1 / 2} as="h4" css={important}>
+                      Cell Phone: 973-518-0044
+                  </Box>
 
-          <Box width={1 / 2} as="h4" css={important}>
-            Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+                  <Box width={1 / 2} as="h4" css={important}>
+                      Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+                  </Box>
+                  <Box width={1} css={important}>
+                      <h5>University of Maryland College Park
+                          Bachelors of Science Computer Science - May 2014</h5>
+                  </Box>
+                  {/*<Box width={1 / 2} as="h4" css={important}>*/}
+                  {/*LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
+                  {/*</Box>*/}
+              </Flex>
           </Box>
-          <Box width={1 / 2} as="h4" css={important}>
-            LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>
-          </Box>
-        </Flex>
       </Flex>
-        <h4><span css={important}>Education </span>
-
-            University of Maryland{' '}
-            College Park
-            Bachelors of Science
-            Computer Science
-            - May 2014
-        </h4>
-            <section className="body">
+      <h4>
+        <span css={important}>Education </span>
+        University of Maryland College Park Bachelors of Science Computer
+        Science - May 2014
+      </h4>
+      <section className="body">
         <SectionHeader>Professional Experience</SectionHeader>
         {sections.professionalExperience.map(experiance => (
           <ProfessionalExperience key={experiance.name} {...experiance} />
