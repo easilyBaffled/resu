@@ -6,6 +6,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Flex, Box } from "@rebass/grid/emotion";
 
+import { School, Phone, Email, LocationCity } from 'emotion-icons/material';
+import { MarkGithub } from 'emotion-icons/octicons';
+
 import "./styles.css";
 import "./rythm.css";
 
@@ -94,23 +97,22 @@ function App() {
               Danny Michaelis
           </Box>
           <Box width={3/4}>
-              <Flex flexWrap="wrap">
-                  <Box width={1 / 2} as="h4" css={important}>
-                      Washington, DC 20009
+              <Flex flexWrap="wrap" css={css({ '& *': { color: '#6ca6d0' }  })}> {/*Experimental, making the colors lighter so it pulls less attention*/}
+                  <Box width={1 / 2} as="h5" css={important}>
+                      <LocationCity/> Washington, DC 20009
                   </Box>
-                  <Box width={1 / 2} as="h4" css={important}>
-                      Email: dmichaelis0@gmail.com
+                  <Box width={1 / 2} as="h5" css={important}>
+                      <Email/> dmichaelis0@gmail.com
                   </Box>
-                  <Box width={1 / 2} as="h4" css={important}>
-                      Cell Phone: 973-518-0044
+                  <Box width={1 / 2} as="h5" css={important}>
+                      <Phone/> 973-518-0044
                   </Box>
 
-                  <Box width={1 / 2} as="h4" css={important}>
-                      Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+                  <Box width={1 / 2} as="h5" css={important}>
+                      <MarkGithub /> Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
                   </Box>
-                  <Box width={1} css={important}>
-                      <h5>University of Maryland College Park
-                          Bachelors of Science Computer Science - May 2014</h5>
+                  <Box as="h5" css={[important]}>
+                      <School /> University of Maryland College Park BS Computer Science - May 2014
                   </Box>
                   {/*<Box width={1 / 2} as="h4" css={important}>*/}
                   {/*LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
@@ -118,11 +120,6 @@ function App() {
               </Flex>
           </Box>
       </Flex>
-      <h4>
-        <span css={important}>Education </span>
-        University of Maryland College Park Bachelors of Science Computer
-        Science - May 2014
-      </h4>
       <section className="body">
         <SectionHeader>Professional Experience</SectionHeader>
         {sections.professionalExperience.map(experiance => (
