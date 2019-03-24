@@ -12,6 +12,10 @@ import "./rythm.css";
 
 import sections from './sections';
 
+const flags = {
+    skillBar: true
+};
+
 const negateMargin = css({ margin: 0 } );
 
 const centered = css({
@@ -36,31 +40,32 @@ const ImportantHeader = styled.h3(
   important
 );
 
-const ToolsBar = () =>
+const ToolsBar = ( { size = 1 } ) =>
+    flags.skillBar &&
     <Box width={1}>
-        <Flex alignItems="center" css={css({ '& *': { marginRight: 20, marginBottom: '.5rem' } })}>
-            <h5>Tools:</h5>
-            <Box>
-                <GraphQL css={ css({ height: '1.5rem' }) }/> GraphQL
-            </Box>
-            <Box>
-                <ReactLogo css={ css({ height: '1.5rem' }) } /> React
-            </Box>
-            <Box>
-                <Redux css={ css({ height: '1.5rem' }) } /> Redux
-            </Box>
-            <Box>
-                <JQuery css={ css({ height: '1.5rem' }) } /> JQuery ( + HandleBars )
-            </Box>
-            <Box>
-                <Sass css={ css({ height: '1.5rem' }) } /> Sass
-            </Box>
-            <Box>
-                <Nodejs css={ css({ height: '1.5rem' }) } /> Node.js ( Express )
-            </Box>
-            <Box>
-                <Angular css={ css({ height: '1.5rem' }) } /> Angular
-            </Box>
+        <Flex alignItems="center" css={css({ '& *': { marginRight: 20, marginBottom: '.5rem', height: `${Number(size)+.5}rem`, fontSize: `${size}rem` } })}>
+            <h4>Tools:</h4>
+            <Flex alignItems="center">
+                <GraphQL /> <p>GraphQL</p>
+            </Flex>
+            <Flex alignItems="center">
+                <ReactLogo /> <p>React</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Redux  /> <p>Redux</p>
+            </Flex>
+            <Flex alignItems="center">
+                <JQuery  /> <p>JQuery</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Sass  /> <p>Sass</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Nodejs  /> <p>Node.js</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Angular  /> <p>Angular</p>
+            </Flex>
         </Flex>
     </Box>;
 
@@ -98,7 +103,7 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
         <li key={point}>{point}</li>
       ))}
     </ul>
-    <ToolsBar/>
+    <ToolsBar size={.8}/>
     <Box width={2/3} css={css({borderBottom: "1px solid black"})}/>
   </div>
 );
