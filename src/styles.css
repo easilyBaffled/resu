@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box !important;
+  margin: 0;
 }
 
 body {
@@ -35,4 +36,8 @@ code {
 
 a {
   color: unset;
+}
+
+.body {
+  padding: 0 3rem;
 }
