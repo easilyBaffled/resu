@@ -55,7 +55,7 @@ const centered = css({
   alignItems: "center"
 });
 
-const important = css({
+const blueText = css({
   color: "#138ade"
 });
 
@@ -71,7 +71,7 @@ const ImportantHeader = styled.h3(
     display: "flex",
     alignItems: "center"
   },
-  important
+  blueText
 );
 
 const ToolsBar = ({ size = 1 }) =>
@@ -84,7 +84,7 @@ const ToolsBar = ({ size = 1 }) =>
             marginRight: 20,
             marginBottom: 0,
             height: `${Number(size) + 0.5}rem`,
-            fontSize: `${size}rem`
+            fontSize: `${size}rem`,
           }
         })}
       >
@@ -132,49 +132,50 @@ const ItemHeader = styled.h5(
 
 const Header = () =>
     <Flex as="header" css={[centered, sectionBorders.bottom]}>
-        <Box width={1 / 4} as="h1" css={[important]}>
+        <Box width={1 / 4} as="h1" css={[blueText, css({ padding: 0 })]}>
             Danny Michaelis
         </Box>
         <Box width={3 / 4} css={sectionBorders.left}>
-            <Flex flexWrap="wrap">
+            <Flex flexWrap="wrap" css={css({ '& *': { color: '#73AFD9' }  })}> {/*Experimental, making the colors lighter so it pulls less attention*/}
                 <Box
-                    width={1}
-                    as="h4"
-                    css={[important, splitPadding, headerDataBorders.bottom]}
+                    width={1/2}
+                    as="h5"
+                    css={[splitPadding, headerDataBorders.bottom]}
                 >
-                    2122 Massachusetts Ave NW Washington, DC 20008
+                    { useIcon ? <LocationCity/>  : '' }Washington, DC 20009
                 </Box>
                 <Box
                     width={1 / 2}
-                    as="h4"
+                    as="h5"
                     css={[
-                        important,
                         splitPadding,
                         headerDataBorders.bottom,
-                        headerDataBorders.right
+                        headerDataBorders.left
                     ]}
                 >
-                    Email: dmichaelis0@gmail.com
+                    { useIcon ? <Email/>  : 'Email:' } dmichaelis0@gmail.com
                 </Box>
                 <Box
                     width={1 / 2}
-                    as="h4"
-                    css={[important, splitPadding, headerDataBorders.bottom]}
+                    as="h5"
+                    css={[splitPadding, headerDataBorders.bottom]}
                 >
-                    Cell Phone: 973-518-0044
+                    { useIcon ? <Phone/>  : 'Phone:' } 973-518-0044
                 </Box>
-
                 <Box
                     width={1 / 2}
-                    as="h4"
-                    css={[important, splitPadding, headerDataBorders.right]}
+                    as="h5"
+                    css={[splitPadding, headerDataBorders.left, headerDataBorders.bottom]}
                 >
-                    Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+                    { useIcon ? <MarkGithub/>  : '' } Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
                 </Box>
-                <Box width={1 / 2} as="h4" css={[important, splitPadding]}>
-                    LinkedIn:{" "}
-                    <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>
+                <Box as="h5">
+                    { useIcon ? <School/>  : 'School:' } University of Maryland College Park BS Computer Science - May 2014
                 </Box>
+                {/*<Box width={1 / 2} as="h5" css={[important, splitPadding]}>*/}
+                    {/*LinkedIn:{" "}*/}
+                    {/*<a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
+                {/*</Box>*/}
             </Flex>
         </Box>
     </Flex>;
@@ -192,7 +193,7 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
         <li key={point}>{point}</li>
       ))}
     </ul>
-    <ToolsBar size={0.8} />
+    <ToolsBar size={1} />
     <Box width={2 / 3} mb={3} css={name !== "AOL" && sectionBorders.bottom} />
   </Box>
 );
@@ -215,34 +216,7 @@ const useIcon = true;
 function App() {
   return (
     <div className="page">
-      <Flex as="header" css={centered}>
-          <Box width={1/4} as="h1" css={important}>
-              Danny Michaelis
-          </Box>
-          <Box width={3/4}>
-              <Flex flexWrap="wrap" css={css({ '& *': { color: '#6ca6d0' }  })}> {/*Experimental, making the colors lighter so it pulls less attention*/}
-                  <Box width={1 / 2} as="h5" css={important}>
-                      { useIcon ? <LocationCity/>  : '' }Washington, DC 20009
-                  </Box>
-                  <Box width={1 / 2} as="h5" css={important}>
-                       { useIcon ? <Email/>  : 'Email:' } dmichaelis0@gmail.com
-                  </Box>
-                  <Box width={1 / 2} as="h5" css={important}>
-                      { useIcon ? <Phone/>  : 'Phone:' } 973-518-0044
-                  </Box>
-
-                  <Box width={1 / 2} as="h5" css={important}>
-                      { useIcon ? <MarkGithub/>  : '' } Github: <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
-                  </Box>
-                  <Box as="h5" css={[important]}>
-                      { useIcon ? <School/>  : 'School:' } University of Maryland College Park BS Computer Science - May 2014
-                  </Box>
-                  {/*<Box width={1 / 2} as="h4" css={important}>*/}
-                  {/*LinkedIn: <a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
-                  {/*</Box>*/}
-              </Flex>
-          </Box>
-      </Flex>
+     <Header />
       <section className="body">
         <SectionHeader>Professional Experience</SectionHeader>
         {sections.professionalExperience.map( ( experiance, i ) => (
@@ -257,11 +231,6 @@ function App() {
           ))}
         </div>
       </footer>
-      <h4>
-        <span css={important}>Education </span>
-        University of Maryland College Park Bachelors of Science Computer
-        Science - May 2014
-      </h4>
     </div>
   );
 }

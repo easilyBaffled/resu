@@ -59,12 +59,12 @@ export default {
                         maintain order and aspect ratio when on smaller screens. Built with
                         just native Javascript.
                     </p>
-                    <p>
+                    <div>
                         Demo:{" "}
                         <a href="https://codepen.io/easilyBaffled/full/KvKrev/">
                             https://codepen.io/easilyBaffled/full/KvKrev/
                         </a>
-                    </p>
+                    </div>
                     <p>
                         Code:{" "}
                         <a href="https://codepen.io/easilyBaffled/pen/KvKrev">
@@ -124,10 +124,10 @@ export default {
                         the value that's being logged instead of <code>undefined</code> like{" "}
                         <code>console.log</code>.
                     </p>
-                    <p>
+                    <div>
                         Slides for DCJS talk:{" "}
                         <a href="https://bit.ly/2Y4S43G">https://bit.ly/2Y4S43G</a>{" "}
-                    </p>
+                    </div>
                     <p>
                         Available on NPM:{" "}
                         <a href="https://nodei.co/npm/console.ident">
