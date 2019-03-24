@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Flex, Box } from "@rebass/grid/emotion";
+import { GraphQL, JQuery, ReactLogo, Redux, Sass, Nodejs, Angular } from 'emotion-icons/simpleIcons';
 
 import "./styles.css";
 import "./rythm.css";
@@ -13,6 +14,15 @@ import sections from "./sections";
 
 console.ident = ( v, l = '' ) => ( console.log( l, v ), v );
 
+const flags = {
+    skillBar: true
+};
+
+/*
+* ==================
+* Styles
+* ==================
+* */
 const sectionBorders = {
     top: css({ borderTop: '2px solid black'}),
     right: css({ borderRight: '2px solid black'}),
@@ -26,6 +36,10 @@ const headerDataBorders = {
     bottom: css({ borderBottom: '1px solid lightgrey'}),
     left: css({ borderLeft: '1px solid lightgrey'}),
 }
+
+
+
+const negateMargin = css({ margin: 0 } );
 
 const centered = css({
   display: "flex",
@@ -50,6 +64,35 @@ const ImportantHeader = styled.h3(
   },
   important
 );
+
+const ToolsBar = ( { size = 1 } ) =>
+    flags.skillBar &&
+    <Box width={1}>
+        <Flex alignItems="center" css={css({ '& *': { marginRight: 20, marginBottom: '.5rem', height: `${Number(size)+.5}rem`, fontSize: `${size}rem` } })}>
+            <h4>Tools:</h4>
+            <Flex alignItems="center">
+                <GraphQL /> <p>GraphQL</p>
+            </Flex>
+            <Flex alignItems="center">
+                <ReactLogo /> <p>React</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Redux  /> <p>Redux</p>
+            </Flex>
+            <Flex alignItems="center">
+                <JQuery  /> <p>JQuery</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Sass  /> <p>Sass</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Nodejs  /> <p>Node.js</p>
+            </Flex>
+            <Flex alignItems="center">
+                <Angular  /> <p>Angular</p>
+            </Flex>
+        </Flex>
+    </Box>;
 
 const SectionHeader = ({ children }) => (
   <ImportantHeader>
@@ -81,6 +124,7 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
             <li key={point}>{point}</li>
           ))}
         </ul>
+        <ToolsBar size={.8}/>
         <Box width={2/3} mb={3} css={ name !== 'AOL' && sectionBorders.bottom } />
   </Box>
 );
