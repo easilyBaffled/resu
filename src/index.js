@@ -59,13 +59,13 @@ const blueText = css({
 });
 
 const Underlined = styled.span({
-  paddingRight: "1.5rem",
-  paddingTop: ".5rem",
-  paddingBottom: ".5rem",
+  paddingRight: "1.5em",
+  paddingTop: ".4em",
+  paddingBottom: ".4em",
   borderBottom: "2px solid #090909"
 });
 
-const ImportantHeader = styled.h3(
+const ImportantHeader = styled.h4(
   {
     display: "flex",
     alignItems: "center"
@@ -75,41 +75,31 @@ const ImportantHeader = styled.h3(
 
 const ToolsBar = ({ size = 1 }) =>
   flags.skillBar && (
-    <Box width={1} css={[headerDataBorders.top, css({ padding: ".5rem 0" })]}>
-      <Flex
-        alignItems="center"
+    <Box width={1} css={css({ padding: ".5em 0" })}>
+      <h4>Tools:</h4>
+      <Box
+        flexDirection="column"
         css={css({
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+          /* grid-column-gap: 8px; */
+          gridRowGap: ".5em",
           "& *": {
-            marginRight: 20,
-            marginBottom: 0,
-            height: `${Number(size) + 0.5}rem`,
-            fontSize: `${size}rem`
+            height: `${Number(size) + 0.5}em`,
+            fontSize: `${size}em`,
+            alignSelf: 'center'
           }
         })}
       >
-        <h4>Tools:</h4>
-        <Flex alignItems="center">
-          <GraphQL /> <p>GraphQL</p>
-        </Flex>
-        <Flex alignItems="center">
-          <ReactLogo /> <p>React</p>
-        </Flex>
-        <Flex alignItems="center">
-          <Redux /> <p>Redux</p>
-        </Flex>
-        <Flex alignItems="center">
-          <JQuery /> <p>JQuery</p>
-        </Flex>
-        <Flex alignItems="center">
-          <Sass /> <p>Sass</p>
-        </Flex>
-        <Flex alignItems="center">
-          <Nodejs /> <p>Node.js</p>
-        </Flex>
-        <Flex alignItems="center">
-          <Angular /> <p>Angular</p>
-        </Flex>
-      </Flex>
+        <GraphQL /> <p>GraphQL</p>
+        <ReactLogo /> <p>React</p>
+        <Redux /> <p>Redux</p>
+        <JQuery /> <p>JQuery</p>
+        <Sass /> <p>Sass</p>
+        <Nodejs /> <p>Node.js</p>
+        <Angular /> <p>Angular</p>
+      </Box>
     </Box>
   );
 
@@ -123,61 +113,59 @@ const ItemHeader = styled.h5(
   {
     paddingTop: "0",
     "& *": {
-      paddingRight: "1rem"
+      paddingRight: "1em"
     }
   },
   centered
 );
 
-const Header = () => (
-  <Flex as="header" css={[centered, sectionBorders.bottom]}>
-    <Box width={1 / 4} as="h1" css={[blueText, css({ padding: 0 })]}>
-      Danny Michaelis
-    </Box>
-    <Box width={3 / 4} css={sectionBorders.left}>
-      <Flex flexWrap="wrap" css={css({ "& *": { color: "#73AFD9" } })}>
-        {" "}
-        {/*Experimental, making the colors lighter so it pulls less attention*/}
-        <Box
-          width={1 / 2}
-          as="h5"
-          css={[splitPadding, headerDataBorders.bottom]}
-        >
-          {flags.useIcon ? <LocationCity /> : ""}Washington, DC 20009
-        </Box>
-        <Box
-          width={1 / 2}
-          as="h5"
-          css={[splitPadding, headerDataBorders.bottom, headerDataBorders.left]}
-        >
-          {flags.useIcon ? <Email /> : "Email:"} dmichaelis0@gmail.com
-        </Box>
-        <Box
-          width={1 / 2}
-          as="h5"
-          css={[splitPadding, headerDataBorders.bottom]}
-        >
-          {flags.useIcon ? <Phone /> : "Phone:"} 973-518-0044
-        </Box>
-        <Box
-          width={1 / 2}
-          as="h5"
-          css={[splitPadding, headerDataBorders.left, headerDataBorders.bottom]}
-        >
-          {flags.useIcon ? <MarkGithub /> : ""} Github:{" "}
-          <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
-        </Box>
-        <Box as="h5">
-          {flags.useIcon ? <School /> : "School:"} University of Maryland
-          College Park BS Computer Science - May 2014
-        </Box>
-        {/*<Box width={1 / 2} as="h5" css={[important, splitPadding]}>*/}
-        {/*LinkedIn:{" "}*/}
-        {/*<a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
-        {/*</Box>*/}
-      </Flex>
-    </Box>
-  </Flex>
+const Header = ({ as = "p" }) => (
+  <Box width={1 / 4}>
+    <Flex
+      as="header"
+      flexDirection="column"
+      css={[centered, sectionBorders.right]}
+    >
+      <Box
+        width={1}
+        as="h2"
+        css={[blueText, css({ padding: 0 }), sectionBorders.bottom]}
+      >
+        Danny Michaelis
+      </Box>
+      <Box width={1}>
+        <Flex flexWrap="wrap" css={css({ "& *": { color: "#73AFD9" } })}>
+          {" "}
+          {/*Experimental, making the colors lighter so it pulls less attention*/}
+          <Box width={1} as={as} css={[splitPadding, headerDataBorders.bottom]}>
+            {flags.useIcon ? <LocationCity /> : ""} <br /> Washington, DC 20009
+          </Box>
+          <Box width={1} as={as} css={[splitPadding, headerDataBorders.bottom]}>
+            {flags.useIcon ? <Email /> : "Email:"} <br /> dmichaelis0@gmail.com
+          </Box>
+          <Box width={1} as={as} css={[splitPadding, headerDataBorders.bottom]}>
+            {flags.useIcon ? <Phone /> : "Phone:"} <br /> 973-518-0044
+          </Box>
+          <Box width={1} as={as} css={[splitPadding, headerDataBorders.bottom]}>
+            {flags.useIcon ? <MarkGithub /> : ""} Github:{" "} <br />
+            <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
+          </Box>
+          <Box as={as}>
+            {flags.useIcon ? <School /> : "School:"} <br />
+            University of Maryland <br />
+            College Park BS Computer Science <br />
+            May 2014
+          </Box>
+          {/*<Box width={1 / 2} as="h5" css={[important, splitPadding]}>*/}
+          {/*LinkedIn:{" "}*/}
+          {/*<a href="https://goo.gl/FMhSPF">https://goo.gl/FMhSPF</a>*/}
+          {/*</Box>*/}
+        </Flex>
+      </Box>
+      <Box width={1} mb={3} css={sectionBorders.top} />
+      <ToolsBar size={1} />
+    </Flex>
+  </Box>
 );
 
 const ProfessionalExperience = ({ name, dateRange, title, points }) => (
@@ -187,12 +175,11 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
       <ItemHeader>{dateRange}</ItemHeader>
     </Flex>
     <ItemHeader>{name}</ItemHeader>
-    <ul style={{ padding: "0 2rem 1rem" }}>
+    <ul style={{ padding: "0 2em 1em" }}>
       {points.map(point => (
         <li key={point}>{point}</li>
       ))}
     </ul>
-    <ToolsBar size={1} />
     <Box width={2 / 3} mb={3} css={name !== "AOL" && sectionBorders.bottom} />
   </Box>
 );
@@ -208,19 +195,21 @@ const PersonalProject = ({ name, icon: Icon, content }) => (
 );
 
 const splitPadding = css({
-  padding: ".5rem .5rem .5rem"
+  padding: ".5em .5em .5em"
 });
 
 function App() {
   return (
     <div className="page">
-      <Header />
-      <section className="body">
-        <SectionHeader>Professional Experience</SectionHeader>
-        {sections.professionalExperience.map((experiance, i) => (
-          <ProfessionalExperience key={i} {...experiance} />
-        ))}
-      </section>
+      <Flex>
+        <Header />
+        <section className="body">
+          <SectionHeader>Professional Experience</SectionHeader>
+          {sections.professionalExperience.map((experiance, i) => (
+            <ProfessionalExperience key={i} {...experiance} />
+          ))}
+        </section>
+      </Flex>
       <footer css={sectionBorders.top}>
         <SectionHeader>Personal Projects</SectionHeader>
         <div className="grid">
