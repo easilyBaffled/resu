@@ -8,10 +8,10 @@ export default {
             dateRange: "December '17 - Current",
             name: "Lab49",
             points: [
-                "Built UI for financial web platform with modern Javascript",
+                "Contributes to a commercial web application with over 100,000 users in beta testing (built in react and redux)",
+                "Collaborates directly with client stakeholders to ensure project integrity and stability",
                 "Built experimental dashboard for service health reporting",
-                "Iterated on existing company best practices",
-                "Developed and demoed new possible practices and tools such as Git Hooks, GraphQL, and Property-Based Testing"
+                "Built UI for financial web platform with modern Javascript"
             ]
         },
         {
@@ -19,10 +19,10 @@ export default {
             dateRange: "June '16 - July '17",
             name: "Planet3",
             points: [
-                "Worked on a 4 person global team to build a server-side rendered web app using Jquery and Handlebars. Initial app was built in 4 months for 10,000 pilot users.",
-                "Used React.js to build a client-side rendered companion to the portal",
-                "Set testing and documentation expectations for the project",
-                "Worked directly with teams across the company: product, sales, education, game development, and systems architecture"
+                "Led a four person global team to build a server-side rendered web app using JQuery and handlebars. The MVP app was built in four months for 10,000 pilot users",
+                "Initiated a process to review and updated development practices and standards by creating custom ESLint rules",
+                "Utilized user (consumer) feedback on MVP to build a successful second iteration app, which was deployed with updates on a weekly basis ",
+                "Interacted directly with teams across the company; product, sales, education, game development, systems architecture ",
             ]
         },
         {
@@ -30,9 +30,9 @@ export default {
             dateRange: "December '15 - April '16",
             name: "Persista Inc.",
             points: [
-                "Member of a five person seed round start-up",
-                "Worked as a full stack Javascript developer to build a new enterprise application",
-                "Used React.js and Redux to create UI components that could be shared across a web app, mobile web app, and chrome extension"
+                "Member of a five person start-up and contributed to all aspects of the product including funding meetings",
+                "Built a multi-platform application as a full stack java script developer",
+                "Used React and Redux.js to create UI components that could be shared across a web app, mobile web app, and chrome extension ",
             ]
         },
         {
@@ -49,6 +49,29 @@ export default {
     ],
     personalProjects: [
         {
+            name: "console.ident",
+            icon: NPM,
+            content: () => (
+                <div>
+                    <p>
+                        console.ident is the console function Modern Javascript has been missing. It returns
+                        the value that's being logged instead of <code>undefined</code> like{" "}
+                        <code>console.log</code>.
+                    </p>
+                    <div>
+                        Slides for DCJS talk:{" "}
+                        <a href="https://bit.ly/2Y4S43G">https://bit.ly/2Y4S43G</a>{" "}
+                    </div>
+                    <p>
+                        Available on NPM:{" "}
+                        <a href="https://nodei.co/npm/console.ident">
+                            https://nodei.co/npm/console.ident
+                        </a>
+                    </p>
+                </div>
+            )
+        },
+        {
             name: "Responsive Custom Layout",
             icon: () => "-",
             content: () => (
@@ -59,34 +82,16 @@ export default {
                         maintain order and aspect ratio when on smaller screens. Built with
                         just native Javascript.
                     </p>
-                    <p>
+                    <div>
                         Demo:{" "}
                         <a href="https://codepen.io/easilyBaffled/full/KvKrev/">
                             https://codepen.io/easilyBaffled/full/KvKrev/
                         </a>
-                    </p>
+                    </div>
                     <p>
                         Code:{" "}
                         <a href="https://codepen.io/easilyBaffled/pen/KvKrev">
                             https://codepen.io/easilyBaffled/pen/KvKrev
-                        </a>
-                    </p>
-                </div>
-            )
-        },
-        {
-            name: <code>pid-from-port</code>,
-            icon: () => "",
-            content: () => (
-                <div>
-                    <p>
-                        A fork, with an open pull request, of an existing module to fix a
-                        bug, simplify the code, and improve CI features. A cross-platform
-                        node module that can find a pid from a port number.
-                    </p>
-                    <p>
-                        <a href="https://github.com/easilyBaffled/pid-from-port">
-                            https://github.com/easilyBaffled/pid-from-port
                         </a>
                     </p>
                 </div>
@@ -115,27 +120,23 @@ export default {
             )
         },
         {
-            name: "console.ident",
-            icon: NPM,
+            name: <code>pid-from-port</code>,
+            icon: () => "",
             content: () => (
                 <div>
                     <p>
-                        The console function Modern Javascript has been missing. It returns
-                        the value that's being logged instead of <code>undefined</code> like{" "}
-                        <code>console.log</code>.
+                        A fork, with an open pull request, of an existing module to fix a
+                        bug, simplify the code, and improve CI features. A cross-platform
+                        node module that can find a pid from a port number.
                     </p>
                     <p>
-                        Slides for DCJS talk:{" "}
-                        <a href="https://bit.ly/2Y4S43G">https://bit.ly/2Y4S43G</a>{" "}
-                    </p>
-                    <p>
-                        Available on NPM:{" "}
-                        <a href="https://nodei.co/npm/console.ident">
-                            https://nodei.co/npm/console.ident
+                        <a href="https://github.com/easilyBaffled/pid-from-port">
+                            https://github.com/easilyBaffled/pid-from-port
                         </a>
                     </p>
                 </div>
             )
-        }
+        },
+
     ]
 };
