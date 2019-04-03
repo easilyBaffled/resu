@@ -177,7 +177,7 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
     <ItemHeader>{name}</ItemHeader>
     <ul style={{ padding: "0 2em 1em" }}>
       {points.map(point => (
-        <li key={point}>{point}</li>
+        <li key={point}><p>{point}</p></li>
       ))}
     </ul>
     <Box width={2 / 3} mb={3} css={name !== "AOL" && sectionBorders.bottom} />
