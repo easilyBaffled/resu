@@ -62,7 +62,8 @@ const Underlined = styled.span({
   paddingRight: "1.5em",
   paddingTop: ".4em",
   paddingBottom: ".4em",
-  borderBottom: "2px solid #090909"
+  borderBottom: "2px solid #090909",
+  marginBottom: "0.4em"
 });
 
 const ImportantHeader = styled.h4(
@@ -75,7 +76,7 @@ const ImportantHeader = styled.h4(
 
 const ToolsBar = ({ size = 1 }) =>
   flags.skillBar && (
-    <Box width={1} css={css({ padding: ".5em 0" })}>
+    <Box width={1}>
       <h4>Tools:</h4>
       <Box
         flexDirection="column"
@@ -86,9 +87,8 @@ const ToolsBar = ({ size = 1 }) =>
           /* grid-column-gap: 8px; */
           gridRowGap: ".5em",
           "& *": {
-            height: `${Number(size) + 0.5}em`,
-            fontSize: `${size}em`,
-            alignSelf: 'center'
+            lineHeight: 0,
+            alignSelf: "center"
           }
         })}
       >
@@ -98,7 +98,6 @@ const ToolsBar = ({ size = 1 }) =>
         <JQuery /> <p>JQuery</p>
         <Sass /> <p>Sass</p>
         <Nodejs /> <p>Node.js</p>
-        <Angular /> <p>Angular</p>
       </Box>
     </Box>
   );
@@ -120,20 +119,16 @@ const ItemHeader = styled.h5(
 );
 
 const Header = ({ as = "p" }) => (
-  <Box width={1 / 4}>
-    <Flex
-      as="header"
-      flexDirection="column"
-      css={[centered, sectionBorders.right]}
-    >
+  <Box width={1 / 4} mb="2em" css={sectionBorders.right}>
+    <Flex as="header" flexDirection="column" pr="2em" css={[centered]}>
       <Box
         width={1}
         as="h2"
-        css={[blueText, css({ padding: 0 }), sectionBorders.bottom]}
+        css={[blueText, css({ padding: ".5em 0" }), sectionBorders.bottom]}
       >
         Danny Michaelis
       </Box>
-      <Box width={1}>
+      <Box width={1} pb="1em">
         <Flex flexWrap="wrap" css={css({ "& *": { color: "#73AFD9" } })}>
           {" "}
           {/*Experimental, making the colors lighter so it pulls less attention*/}
@@ -147,7 +142,7 @@ const Header = ({ as = "p" }) => (
             {flags.useIcon ? <Phone /> : "Phone:"} <br /> 973-518-0044
           </Box>
           <Box width={1} as={as} css={[splitPadding, headerDataBorders.bottom]}>
-            {flags.useIcon ? <MarkGithub /> : ""} Github:{" "} <br />
+            {flags.useIcon ? <MarkGithub /> : ""} Github: <br />
             <a href="https://goo.gl/rylpYp">https://goo.gl/rylpYp</a>
           </Box>
           <Box as={as}>
@@ -177,18 +172,26 @@ const ProfessionalExperience = ({ name, dateRange, title, points }) => (
     <ItemHeader>{name}</ItemHeader>
     <ul style={{ padding: "0 2em 1em" }}>
       {points.map(point => (
-        <li key={point}><p>{point}</p></li>
+        <li key={point}>
+          <p>{point}</p>
+        </li>
       ))}
     </ul>
-    <Box width={2 / 3} mb={3} css={name !== "AOL" && sectionBorders.bottom} />
+    <Box
+      width={"232px"}
+      mb="1.5em"
+      css={name !== "AOL" && sectionBorders.bottom}
+    />
   </Box>
 );
 
-const PersonalProject = ({ name, icon: Icon, content }) => (
-  <div>
+const classMap = ["left-content", "right-content", "footer"];
+
+const PersonalProject = ({ name, icon: Icon, content, i }) => (
+  <div className={classMap[i]}>
     <ItemHeader>
       <span>{name}</span>
-      <Icon />
+      {/*<Icon />*/}
     </ItemHeader>
     {content()}
   </div>
@@ -214,7 +217,7 @@ function App() {
         <SectionHeader>Personal Projects</SectionHeader>
         <div className="grid">
           {sections.personalProjects.map((project, i) => (
-            <PersonalProject key={i} {...project} />
+            <PersonalProject key={i} {...project} i={i} />
           ))}
         </div>
       </footer>
